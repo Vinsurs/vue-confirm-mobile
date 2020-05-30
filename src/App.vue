@@ -1,28 +1,87 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <div class="box">
+      <v-confirm
+        :visible.sync="visible"
+        round
+        shadow
+        @cancel="cancel"
+        @open="open"
+        @close="close"
+        @confirm="confirm"
+        titleClassName="title"
+      >
+        <!-- <template slot="head">我是标题</template>
+        <template slot="body">我是内容</template> -->
+      </v-confirm>
+    </div>
+    <button @click="handleClick">
+      open
+    </button>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
+// import Confirm from "./packages/VConfirm/Confirm";
 export default {
   name: "App",
   components: {
-    HelloWorld
+    // Confirm
+  },
+  data() {
+    return {
+      visible: true
+    };
+  },
+  methods: {
+    close() {
+      console.log("close");
+    },
+    open() {
+      console.log("open");
+    },
+    cancel() {
+      console.log("cancel");
+    },
+    confirm() {
+      console.log("confirm");
+    },
+    handleClick() {
+      this.visible = true;
+      // this.$confirm({
+      //   mask: true,
+      //   shadow: true,
+      //   title: "hello",
+      //   content: "nihao",
+      //   cancelText: "取消",
+      //   confirmText: "确定",
+      //   titleClassName: "title",
+      //   round: true,
+      //   onCancel: () => {
+      //     console.log(this.visible, "cancel");
+      //   },
+      //   onConfirm: () => {
+      //     console.log(this.visible, "confirm");
+      //   }
+      // });
+    }
   }
 };
 </script>
 
 <style lang="scss">
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  // height: 100vh;
+  .box {
+    width: 200px;
+    height: 200px;
+    background: pink;
+    font-size: 30px;
+  }
 }
 </style>

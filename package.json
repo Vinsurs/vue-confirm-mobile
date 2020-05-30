@@ -1,11 +1,17 @@
 {
   "name": "vue-confirm-mobile",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "description": "A confirm component based on Vue2 in mobile",
+  "main": "lib/vue-confirm-mobile.umd.min.js",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "lib": "vue-cli-service build --target lib --name vue-confirm-mobile --dest lib src/packages/VConfirm/index.js"
   },
   "dependencies": {
     "core-js": "^3.6.5",
@@ -20,9 +26,40 @@
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-vue": "^6.2.2",
+    "lib-flexible": "0.3.2",
     "node-sass": "^4.12.0",
+    "postcss-pxtrem": "3.0.3",
     "prettier": "^1.19.1",
     "sass-loader": "^8.0.2",
+    "vue-cli-plugin-postcss-pxtrem": "^1.0.6",
     "vue-template-compiler": "^2.6.11"
-  }
+  },
+  "postcss": {
+    "plugins": {
+      "postcss-pxtrem": {
+        "viewportWidth": 750,
+        "unitPrecision": 3,
+        "minPixelValue": 1
+      }
+    }
+  },
+  "author": "$vinsurs <2407232109@qq.com>",
+  "bugs": {
+    "url": "https://github.com/Vinsurs/vue-confirm-mobile/issues",
+    "email": "2407232109@qq.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Vinsurs/vue-confirm-mobile"
+  },
+  "keywords": [
+    "confirm",
+    "dialog",
+    "vue-confirm-mobile",
+    "v-confirm",
+    "vue-confirm",
+    "mobile",
+    "v-confirm-mobile"
+  ],
+  "license": "MIT"
 }
