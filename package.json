@@ -1,6 +1,6 @@
 {
   "name": "vue-confirm-mobile",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": false,
   "description": "A confirm component based on Vue2 in mobile",
   "main": "lib/vue-confirm-mobile.umd.min.js",
