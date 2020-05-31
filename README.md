@@ -108,36 +108,36 @@ Vue.component(VConfirm.name, VConfirm);
      | footerClassName    | String  | ---             | ---                                                          |
      | round              | Boolean | false           | Whether there is fillet effect                               |
      | shadow             | Boolean | false           | Whether there is shadow                                      |
-   | password           | Boolean | false           | Whether there is a password input                            |
+     | password           | Boolean | false           | Whether there is a password input                            |
      | passwordRequired   | Boolean | true            | Whether password is required or not                          |
-   | passwordPlacehoder | String  | 'Password'      | password placeholder                                         |
-  
-  ​		**events**:
-  
-  | eventName | description                                                  |
-  | --------- | ------------------------------------------------------------ |
-  | open      | Triggered when displayed                                     |
-| close     | Trigger when it disappears                                   |
-  | cancel    | Triggered when the cancel button is clicked                  |
-| confirm   | Triggered when the confirm button is clicked,if password set to true,will receive password value as parameter. |
-  
-  ​	  **slots**:
-  
-  | slotName | description           |
-| -------- | --------------------- |
-  | head     | Custom header content |
-| body     | Custom body content   |
-  
+     | passwordPlacehoder | String  | 'Password'      | password placeholder                                         |
 
-  
+  ​		**events**:
+
+| eventName | description                                                  |
+| --------- | ------------------------------------------------------------ |
+| open      | Triggered when displayed                                     |
+| close     | Trigger when it disappears                                   |
+| cancel    | Triggered when the cancel button is clicked                  |
+| confirm   | Triggered when the confirm button is clicked,if password set to true,will receive password value as parameter. |
+
+  ​	  **slots**:
+
+| slotName | description           |
+| -------- | --------------------- |
+| head     | Custom header content |
+| body     | Custom body content   |
+
+
+
   + When used as a function: 
-  
+
 ```js
   this.$confirm(options)
 ```
-  
+
   `options`:	
-  
+
   ```js
   {
       title,
@@ -151,9 +151,9 @@ Vue.component(VConfirm.name, VConfirm);
       round,
       shadow,
       password,
-    passwordRequired,
+      passwordRequired,
       passwordPlaceholder,
-    onConfirm,
+      onConfirm,
       onCancel
 }
   ```
@@ -161,9 +161,9 @@ Vue.component(VConfirm.name, VConfirm);
 ## License
 
   MIT
+
   
+
   
-  
-  
-  
+
   
