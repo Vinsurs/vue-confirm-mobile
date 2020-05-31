@@ -14,9 +14,10 @@ Confirm.install = Vue => {
       "confirmText",
       "titleClassName",
       "contentClassName",
-      "footerClassName"
+      "footerClassName",
+      "passwordPlaceholder"
     ];
-    let bolOpt = ["mask", "round", "shadow"];
+    let bolOpt = ["mask", "round", "shadow", "password", "passwordRequired"];
     strOpt.forEach(opt => {
       if (options[opt] && isType(options, opt, "string")) {
         instance[opt] = options[opt];
@@ -28,10 +29,13 @@ Confirm.install = Vue => {
       }
     });
     instance.handleConfirm = function() {
+      instance.confirmTouched = true;
+      if (instance.empty) return;
       if (options.onConfirm && isType(options, "onConfirm", "function")) {
-        options.onConfirm();
+        options.onConfirm(instance.pwd);
       }
       instance.visible = false;
+      instance.resetPwd();
     };
 
     instance.handleCancel = function() {
@@ -39,6 +43,7 @@ Confirm.install = Vue => {
         options.onCancel();
       }
       instance.visible = false;
+      instance.resetPwd();
     };
   };
 };

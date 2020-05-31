@@ -6,6 +6,14 @@
       </div>
       <div :class="['v-confirm-body', contentClassName]">
         <slot name="body">{{ content }}</slot>
+        <div class="v-confirm-password" v-if="password">
+          <input
+            :class="['v-confirm-password__input', { required: empty }]"
+            type="password"
+            :placeholder="passwordPlaceholder"
+            v-model="pwd"
+          />
+        </div>
       </div>
       <div :class="['v-confirm-footer', footerClassName]">
         <div class="v-confirm-footer-btns">
@@ -65,19 +73,50 @@ export default {
     shadow: {
       type: Boolean,
       default: false
+    },
+    password: {
+      type: Boolean,
+      default: false
+    },
+    passwordRequired: {
+      type: Boolean,
+      default: true
+    },
+    passwordPlaceholder: {
+      type: String,
+      default: "Password"
     }
   },
   data() {
-    return {};
+    return {
+      pwd: "",
+      confirmTouched: false
+    };
+  },
+  computed: {
+    empty() {
+      if (this.confirmTouched) {
+        return this.passwordRequired && this.pwd === "";
+      }
+      return false;
+    }
   },
   methods: {
     handleCancel() {
       this.$emit("cancel");
       this.$emit("update:visible");
+      this.resetPwd();
     },
     handleConfirm() {
-      this.$emit("confirm");
+      this.confirmTouched = true;
+      if (this.empty) return;
+      this.$emit("confirm", this.pwd);
       this.$emit("update:visible");
+      this.resetPwd();
+    },
+    resetPwd() {
+      this.pwd = "";
+      this.confirmTouched = false;
     }
   },
   watch: {
@@ -125,11 +164,44 @@ export default {
       font-weight: 500;
       padding: 15px;
       border-bottom: 1px solid #c0c4cc;
+      text-align: center;
     }
     .v-confirm-body {
       padding: 15px;
       font-size: 32px;
       min-height: 80px;
+      text-align: center;
+      .v-confirm-password {
+        width: 100%;
+        margin: 15px 0;
+        box-sizing: border-box;
+        .v-confirm-password__input {
+          border: none;
+          outline: none;
+          appearance: none;
+          background-color: #dcdfe6;
+          border-radius: 15px;
+          box-sizing: border-box;
+          display: block;
+          width: 100%;
+          margin: 0;
+          padding: 26px 10px;
+          font-size: 32px;
+          color: #409eff;
+          text-shadow: 0px 0px 0px black;
+          -webkit-text-fill-color: transparent;
+          font-weight: bold;
+          &.required {
+            border: 1px solid red;
+          }
+        }
+        ::-webkit-input-placeholder {
+          color: rgba(0, 0, 0, 0.15);
+          font-size: 32px;
+          text-shadow: none;
+          -webkit-text-fill-color: initial;
+        }
+      }
     }
     .v-confirm-footer {
       display: block;
