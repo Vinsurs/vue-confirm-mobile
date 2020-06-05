@@ -17,7 +17,14 @@ Confirm.install = Vue => {
       "footerClassName",
       "passwordPlaceholder"
     ];
-    let bolOpt = ["mask", "round", "shadow", "password", "passwordRequired"];
+    let bolOpt = [
+      "mask",
+      "round",
+      "shadow",
+      "password",
+      "passwordRequired",
+      "closeOnClickMask"
+    ];
     strOpt.forEach(opt => {
       if (options[opt] && isType(options, opt, "string")) {
         instance[opt] = options[opt];
@@ -30,7 +37,7 @@ Confirm.install = Vue => {
     });
     instance.handleConfirm = function() {
       instance.confirmTouched = true;
-      if (instance.empty) return;
+      if (instance.empty) return instance.$refs.pwdRef.focus();
       if (options.onConfirm && isType(options, "onConfirm", "function")) {
         options.onConfirm(instance.pwd);
       }

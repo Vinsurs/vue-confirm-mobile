@@ -1,5 +1,10 @@
 <template>
-  <div :class="['v-confirm-mask', { mask: mask }]" v-show="visible">
+  <div
+    :class="['v-confirm-mask', { mask: mask }]"
+    v-show="visible"
+    @click="handleMaskClick"
+    ref="maskRef"
+  >
     <div :class="['v-confirm-wrap', { round: round, shadow: shadow }]">
       <div :class="['v-confirm-head', titleClassName]">
         <slot name="head">{{ title }}</slot>
@@ -12,6 +17,7 @@
             type="password"
             :placeholder="passwordPlaceholder"
             v-model="pwd"
+            ref="pwdRef"
           />
         </div>
       </div>
@@ -85,6 +91,10 @@ export default {
     passwordPlaceholder: {
       type: String,
       default: "Password"
+    },
+    closeOnClickMask: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -109,7 +119,7 @@ export default {
     },
     handleConfirm() {
       this.confirmTouched = true;
-      if (this.empty) return;
+      if (this.empty) return this.$refs.pwdRef.focus();
       this.$emit("confirm", this.pwd);
       this.$emit("update:visible");
       this.resetPwd();
@@ -117,6 +127,13 @@ export default {
     resetPwd() {
       this.pwd = "";
       this.confirmTouched = false;
+    },
+    handleMaskClick(ev) {
+      if (this.closeOnClickMask === true) {
+        if (ev.target == this.$refs.maskRef) {
+          this.handleCancel();
+        }
+      }
     }
   },
   watch: {
@@ -134,7 +151,7 @@ export default {
 .v-confirm-mask {
   &.mask {
     position: fixed;
-    z-index: 999;
+    z-index: 999999;
     left: 0;
     top: 0;
     bottom: 0;

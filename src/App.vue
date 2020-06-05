@@ -11,7 +11,8 @@
         @confirm="confirm"
         titleClassName="title"
         password
-        passwordRequired
+        password-required
+        closeOnClickMask
       >
         <!-- <template slot="head">我是标题</template>
         <template slot="body">我是内容</template> -->
@@ -49,26 +50,27 @@ export default {
       console.log("confirm", pwd);
     },
     handleClick() {
-      // this.visible = true;
-      this.$confirm({
-        mask: true,
-        shadow: true,
-        title: "hello",
-        content: "nihao",
-        cancelText: "取消",
-        confirmText: "确定",
-        titleClassName: "title",
-        round: true,
-        password: true,
-        passwordRequired: true,
-        passwordPlaceholder: "密码",
-        onCancel: () => {
-          console.log(this.visible, "cancel");
-        },
-        onConfirm: pwd => {
-          console.log(this.visible, "confirm", pwd);
-        }
-      });
+      this.visible = true;
+      // this.$confirm({
+      //   mask: true,
+      //   shadow: true,
+      //   title: "hello",
+      //   content: "nihao",
+      //   cancelText: "取消",
+      //   confirmText: "确定",
+      //   titleClassName: "title",
+      //   round: true,
+      //   password: true,
+      //   passwordRequired: true,
+      //   passwordPlaceholder: "密码",
+      //   onCancel: () => {
+      //     console.log(this.visible, "cancel");
+      //   },
+      //   onConfirm: pwd => {
+      //     console.log(this.visible, "confirm", pwd);
+      //   },
+      //   closeOnClickMask: true
+      // });
     }
   }
 };

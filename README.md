@@ -95,22 +95,23 @@ Vue.component(VConfirm.name, VConfirm);
 
      **basic property**:
    
-     | name               | type    | default         | description                                                  |
-     | ------------------ | ------- | --------------- | ------------------------------------------------------------ |
-     | visible            | Boolean | false           | Whether the component is visible or not. `.Sync `modifier is required to synchronize the status. |
-     | title              | String  | 'confirm'       | Component title                                              |
-     | content            | String  | 'Are you sure?' | Component body content                                       |
-     | cancelText         | String  | 'cancel'        | Text displayed on Cancel button                              |
-     | confirmText        | String  | 'confirm'       | Text displayed on Confirm button                             |
-     | mask               | Boolean | true            | Whether there is a mask                                      |
-     | titleClassName     | String  | ---             | ---                                                          |
-     | contentClassName   | String  | ---             | ---                                                          |
-     | footerClassName    | String  | ---             | ---                                                          |
-     | round              | Boolean | false           | Whether there is fillet effect                               |
-     | shadow             | Boolean | false           | Whether there is shadow                                      |
-     | password           | Boolean | false           | Whether there is a password input                            |
-     | passwordRequired   | Boolean | true            | Whether password is required or not                          |
-     | passwordPlacehoder | String  | 'Password'      | password placeholder                                         |
+     | name                | type    | default         | description                                                  |
+     | ------------------- | ------- | --------------- | ------------------------------------------------------------ |
+     | visible             | Boolean | false           | Whether the component is visible or not. `.Sync `modifier is required to synchronize the status. |
+     | title               | String  | 'confirm'       | Component title                                              |
+     | content             | String  | 'Are you sure?' | Component body content                                       |
+     | cancelText          | String  | 'cancel'        | Text displayed on Cancel button                              |
+     | confirmText         | String  | 'confirm'       | Text displayed on Confirm button                             |
+     | mask                | Boolean | true            | Whether there is a mask                                      |
+     | titleClassName      | String  | ---             | ---                                                          |
+     | contentClassName    | String  | ---             | ---                                                          |
+     | footerClassName     | String  | ---             | ---                                                          |
+     | round               | Boolean | false           | Whether there is fillet effect                               |
+     | shadow              | Boolean | false           | Whether there is shadow                                      |
+     | password            | Boolean | false           | Whether there is a password input                            |
+     | passwordRequired    | Boolean | true            | Whether password is required or not                          |
+     | passwordPlaceholder | String  | 'Password'      | password placeholder                                         |
+     | closeOnClickMask    | Boolean | false           | ---                                                          |
 
   ​		**events**:
 
@@ -153,6 +154,7 @@ Vue.component(VConfirm.name, VConfirm);
       password,
       passwordRequired,
       passwordPlaceholder,
+      closeOnClickMask,
       onConfirm,
       onCancel
 }
